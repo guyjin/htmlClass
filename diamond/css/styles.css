@@ -156,14 +156,6 @@ div.rubber {
     bottom: 31px;
 }
 
-@-webkit-keyframes runtofirst {
-    from {
-        -webkit-transform: translate(0,0) skewX(35deg);
-    }
-    to {
-        -webkit-transform: translate(180px, -170px) skewX(35deg);
-    }
-}
 
 @-webkit-keyframes jump {
     from {
@@ -173,13 +165,7 @@ div.rubber {
           }
 }
 
-@-webkit-keyframes runtosecond {
-    from {
-        -webkit-transform: translate(180px, -170px);
-    } to {
-        -webkit-transform: translate(12px, -337px);
-    }
-}
+
 
 @-webkit-keyframes runthebases {
     0 {

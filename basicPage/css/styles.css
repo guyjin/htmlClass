@@ -6,21 +6,21 @@ body {
 
 header {
     background-color: black;
-    min-height: 144px;
+    min-height: 72px;
     color: #fff;
 }
 
 #logo {
-    width: 96px;
-    height: 96px;
+    width: 48px;
+    height: 48px;
     float: left;
     background-color: darkred;
-    margin: 24px;
+    margin: 12px;
 }
 
 #bannerText {
     font-size: 24px;
-    line-height: 144px;
+    line-height: 72px;
 }
 
 #nav {
@@ -37,7 +37,7 @@ header {
 
 #nav>ul {
     /*max-height: 48px;*/
-    text-align: center;
+    text-align: left;
 }
 
 #nav>ul>li {
@@ -48,13 +48,13 @@ header {
 .navLink {
     text-decoration: none;
     color: #000;
-    line-height: 4;
-    font-size: 12px;
+    line-height: 3;
+    font-size: 10px;
     display: block;
     padding: 0 26px;
-    width: 150px;
     box-sizing: border-box;
     transition: all .25s linear;
+    text-align: center;
 }
 
 body.contact .navLink.contact,
@@ -102,20 +102,78 @@ body.home .navLink.home{
 
 
 .content {
-
+    font-size: 80%;
+    padding:0 10px;
 }
 
 .main {
-    margin-right: 200px;
+
     box-sizing: border-box;
-    padding: 10px 10px 10px 20px;
+    padding: 10px;
+}
+
+.main h1 {
+    margin-top: 5px;
 }
 
 .sidebar {
-    float: right;
-    width: 200px;
+
+
     padding: 10px;
     box-sizing: border-box;
-    margin-left: 10px;
+
+}
+
+@media(min-width: 800px)  {
+
+   header {
+       min-height: 144px;
+   }
+
+   #logo {
+       height: 96px;
+       width: 96px;
+       margin: 24px;
+   }
+
+   #bannerText {
+       line-height: 144px;
+   }
+
+   #nav ul {
+       text-align: center;
+   }
+
+    .navLink {
+        width: 150px;
+        font-size: 12px;
+        line-height: 4;
+    }
+
+    .content {
+        font-size: 100%;
+        padding: 0;
+    }
+
+    .main {
+        float: left;
+        width: 80%;
+        box-sizing: border-box;
+        padding: 10px 10px 10px 20px;
+    }
+
+    .main h1 {
+        margin-top: 1em;
+    }
+
+    .sidebar {
+        float: right;
+        width: 20%;
+        padding: 15px;
+        box-sizing: border-box;
+        background-color: lightgoldenrodyellow;
+        font-size: 12px;
+    }
+
 }
 
