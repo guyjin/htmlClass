@@ -1,0 +1,46 @@
+body { padding-top: 70px; }
+
+#noitems,
+#items {
+	display: none;
+}
+
+.template {
+	visibility: hidden;
+}
+
+#initialAddForm {
+	margin-top: 2em;
+
+}
+
+#initialAddForm p{
+	text-align: center;
+}
+
+#initialAddForm form div {
+	text-align: center;
+}
+
+#items table {
+	width: 100%;
+	font-size: 18px;
+}
+
+.edit {
+	width: 50px;
+}
+
+#newItemToAdd {
+	width: 300px;
+}
+
+.stars:hover {
+	cursor: pointer;
+}
+
+.star.filled,
+.star.rated {
+	color: gold;
+}
+

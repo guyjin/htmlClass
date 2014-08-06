@@ -1,40 +1,132 @@
 <!DOCTYPE html>
 <html>
-<head lang="en">
-    <meta charset="UTF-8">
-    <title>Rank 'n' File</title>
-    <link href='http://fonts.googleapis.com/css?family=Open+Sans:400,300,600' rel='stylesheet' type='text/css'>
-    <link rel="stylesheet" href="css/styles.css"/>
-    <link rel="stylesheet" href="css/font-awesome.css"/>
+<head>
+	<meta charset="utf-8">
+	<meta http-equiv="X-UA-Compatible" content="IE=edge">
+	<meta name="viewport" content="width=device-width, initial-scale=1">
+	<title>Rank 'n' File</title>
+	<script src="//code.jquery.com/jquery-1.11.0.min.js"></script>
+	<!-- Latest compiled and minified CSS -->
+	<link rel="stylesheet" href="//maxcdn.bootstrapcdn.com/bootstrap/3.2.0/css/bootstrap.min.css">
+
+	<!-- Optional theme -->
+	<link rel="stylesheet" href="//maxcdn.bootstrapcdn.com/bootstrap/3.2.0/css/bootstrap-theme.min.css">
+
+	<!-- Latest compiled and minified JavaScript -->
+	<script src="//maxcdn.bootstrapcdn.com/bootstrap/3.2.0/js/bootstrap.min.js"></script>
+	<script src="js/script.js"></script>
+	<link rel="stylesheet" href="css/rankrstyles.css">
 </head>
 <body>
-<div class="container">
-    <h1>Rank 'n' File</h1>
 
-    <div class="entry">
-        <form>
-            <input id="listEntry" placeholder="Add to your list!" type="text"/>
-            <button type="submit">Add</button>
-            <button type="reset">reset</button>
-        </form>
+		<nav class="navbar navbar-inverse navbar-fixed-top" role="navigation">
+		  <div class="container-fluid">
+		    <!-- Brand and toggle get grouped for better mobile display -->
+		    <div class="navbar-header">
+		      <button type="button" class="navbar-toggle" data-toggle="collapse" data-target="#bs-example-navbar-collapse-1">
+		        <span class="sr-only">Toggle navigation</span>
+		        <span class="icon-bar"></span>
+		        <span class="icon-bar"></span>
+		        <span class="icon-bar"></span>
+		      </button>
+		      <a class="navbar-brand" href="#">Rank 'n' File</a>
+		    </div>
 
-    </div>
-    <div class="list">
-        <ul>
-            <li>
-                <span class="itemName">Return of the King</span>
-                <span class="itemRank">
-                    <span class="highlight">****</span>*
-                </span>
-            </li>
-            <li>
-                <span class="itemName">Indiana Jones and the Lost Ark</span>
-                <span class="itemRank">
-                    <span class="highlight">*****</span>
-                </span>
-            </li>
-        </ul>
-    </div>
-</div>
+		    <!-- Collect the nav links, forms, and other content for toggling -->
+		    <div class="collapse navbar-collapse" id="bs-example-navbar-collapse-1">
+				<button type="button" class="btn btn-primary navbar-btn navbar-right" disabled="disabled" id="mainAddItemBtn"  data-toggle="modal" data-target="#newItemModal"><span class="glyphicon glyphicon-plus"></span> Add New Item</button>
+		    </div><!-- /.navbar-collapse -->
+		  </div><!-- /.container-fluid -->
+		</nav>
+		<div class="container-fluid">
+			<div class="row" id="noitems">
+				<div class="col-md-12">
+					<div class="col-md-6 col-md-offset-3" id="initialAddForm">
+						<div class="well">
+							<form id="firstItem">
+								<p>
+									You don't have any items in your list!  Please add an item below.
+								</p>
+								<div>
+								<label for="item">
+									New List Item:
+								</label>
+								<input type="text" name="newitem" id="newitem" required autofocus>
+						        <label for="rating">Rating: </label>
+						        <span class="stars">
+						        	<span class="star glyphicon glyphicon-star star1"></span>
+										<span class="star glyphicon glyphicon-star star2"></span>
+										<span class="star glyphicon glyphicon-star star3"></span>
+										<span class="star glyphicon glyphicon-star star4"></span>
+										<span class="star glyphicon glyphicon-star star5"></span>
+						        </span>
+								<button class="btn btn-primary" id="newitemBtn"><span class="glyphicon glyphicon-plus"></span> Add</button>
+								</div>
+							</form>
+						</div>
+					</div>
+				</div>
+			</div>
+			<div class="row" id="items">
+				<div class="col-md-12">
+					<table class="table-hover table-condensed table-striped">
+						<thead>
+							<tr>
+								<th>No.</th>
+								<th>Item</th>
+								<th>Rating</th>
+								<th>Edit</th>
+							</tr>
+						</thead>
+						<tbody>
+							
+						</tbody>
+					</table>
+				</div>				
+			</div>
+			<table class="template">
+				<tr>
+					<td class="rowNo"></td>
+					<td class="itemText"></td>
+					<td class="rating">
+						<span class="star glyphicon glyphicon-star star1"></span>
+						<span class="star glyphicon glyphicon-star star2"></span>
+						<span class="star glyphicon glyphicon-star star3"></span>
+						<span class="star glyphicon glyphicon-star star4"></span>
+						<span class="star glyphicon glyphicon-star star5"></span>
+					</td>
+					<td class="edit">
+						<button class="btn btn-default btn-xs">
+						<span class="glyphicon glyphicon-cog"></span> 
+						</button>
+					</td>
+				</tr>
+			</table>
+		</div>
+		<div class="modal fade" id="newItemModal">
+		  <div class="modal-dialog">
+		    <div class="modal-content">
+		      <div class="modal-header">
+		        <button type="button" class="close" data-dismiss="modal"><span aria-hidden="true">&times;</span><span class="sr-only">Close</span></button>
+		        <h4 class="modal-title">Add New Item</h4>
+		      </div>
+		      <div class="modal-body">
+		        <label for="newItemToAdd">New Item:</label> <input type="text" name="newItemToAdd" id="newItemToAdd" autofocus required>
+		        <label for="rating">Rating: </label>
+		        <span class="stars">
+		        	<span class="star glyphicon glyphicon-star star1"></span>
+						<span class="star glyphicon glyphicon-star star2"></span>
+						<span class="star glyphicon glyphicon-star star3"></span>
+						<span class="star glyphicon glyphicon-star star4"></span>
+						<span class="star glyphicon glyphicon-star star5"></span>
+		        </span>
+		      </div>
+		      <div class="modal-footer">
+		        <button type="button" class="btn btn-default" data-dismiss="modal">Close</button>
+		        <button type="button" class="btn btn-primary">Save changes</button>
+		      </div>
+		    </div><!-- /.modal-content -->
+		  </div><!-- /.modal-dialog -->
+		</div><!-- /.modal -->
 </body>
 </html>
