@@ -41,7 +41,7 @@ function init() {
         localStorage.setItem('items',JSON.stringify(a));
     }
 
-    populateList();
+//    populateList();
 }
 
 // build the entire list based on the contents of localStorage

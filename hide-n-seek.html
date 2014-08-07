@@ -2,9 +2,50 @@
 <html>
 <head lang="en">
     <meta charset="UTF-8">
-    <title></title>
+    <title>Hide n Seek</title>
+    <script src="//code.jquery.com/jquery-1.11.0.min.js"></script>
+    <script>
+        $(function(){
+            $('#trigger').on('click', function() {
+//                $('.content').fadeOut();
+                $('.target').animate({
+                    opacity: 0,
+                    height: 0,
+                    left: 150,
+                    top: -100
+                }, 1500, function() {
+                    $(this).hide();
+                })
+            })
+        })
+    </script>
+    <style>
+        .target {
+            position: relative;
+            width: 500px;
+            height: 200px;
+        }
+        .target p {
+            padding: 0;
+            margin: 0;
+        }
+    </style>
 </head>
 <body>
+<h3>Some Header</h3>
+<div class="target">
+    <div class="content">
+        <p>Lorem ipsum dolor sit amet, consectetur adipisicing elit. Architecto consectetur dignissimos eveniet nesciunt
+            temporibus! Enim eum excepturi itaque laboriosam maxime odit praesentium? Assumenda, autem esse illo magnam
+            recusandae reprehenderit sed.</p>
 
+        <p>Ab alias asperiores beatae blanditiis consequatur cupiditate ducimus eius eligendi error eveniet, iure
+            laboriosam
+            laborum magnam, magni necessitatibus neque optio possimus quam quidem rerum sunt voluptas voluptates?
+            Aliquam,
+            doloribus, perspiciatis!</p>
+    </div>
+</div>
+<input type="button" value="click me!" id="trigger"/>
 </body>
 </html>
