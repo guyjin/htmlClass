@@ -1,6 +1,7 @@
 $(function() {
     setupStars();
     setupForm();
+    setupTable();
 })
 
 function setupStars() {
@@ -21,6 +22,19 @@ function setupForm() {
     $('form').on('submit', function(event){
         event.preventDefault();
         processNewItem();
+    });
+    $('form').on('reset', function(event){
+        event.preventDefault();
+        resetForm();
+    })
+}
+
+function setupTable() {
+    $('#items').on('click', function(event){
+        var t = event.target;
+        if($(t).hasClass('glyphicon-remove')){
+            $(t).closest('tr').remove();
+        }
     })
 }
 
@@ -36,7 +50,8 @@ function addItem(text,rating) {
     var newRating = $('#items tbody tr:last-child td.rating .star');
     for(var i = rating - 1; i >= 0; i--) {
         $(newRating[i]).addClass('rated');
-    } 
+    }
+    resetForm();
 }
 
 function fillStar(star) {
@@ -54,4 +69,9 @@ function setRating(star) {
     star.removeClass('rated');
     star.addClass('rated')
     star.prevAll().addClass('rated');
+}
+
+function resetForm() {
+    $('#firstItemName').val('');
+    $('.stars .star').removeClass('rated');
 }
