@@ -1,0 +1,46 @@
+<!DOCTYPE html>
+<html>
+<head lang="en">
+    <meta charset="UTF-8">
+    <title></title>
+    <script src="//code.jquery.com/jquery-1.11.0.min.js"></script>
+    <script>
+        $(function() {
+
+            // get the first 50 photos from Flickr's 'interestingness' feed.
+            $.ajax({
+                url: 'https://api.flickr.com/services/rest/?method=flickr.interestingness.getList&api_key=7249daf9650d0ad5798b60ee498bf461&per_page=50&page=1&format=json&nojsoncallback=1',
+                success: function(data) {
+                    var pics = data;
+                    // send the shots to be added to the page
+                    drawPhotos(pics);
+                }
+            });
+
+        })
+        // go through the data set and create image tags for each image, then insert the tag into the page.
+        function drawPhotos(pics) {
+            for (i = pics['photos']['photo'].length -1;i >= 0; i-- ) {
+                var newImg = "<img src='https://farm" + pics['photos']['photo'][i]['farm'] + ".staticflickr.com/" + pics['photos']['photo'][i]['server'] + "/" + pics['photos']['photo'][i]['id'] + "_" + pics['photos']['photo'][i]['secret'] + ".jpg'>"    ;
+                console.log(newImg);
+                $('body').append(newImg);
+            }
+        }
+    </script>
+    <style>
+        body {
+            display: flex;
+            align-content: flex-start;
+            flex-direction: row;
+            flex-wrap: wrap;
+        }
+
+        img {
+            display: flex;
+        }
+    </style>
+</head>
+<body>
+
+</body>
+</html>
