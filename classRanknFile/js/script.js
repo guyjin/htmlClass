@@ -36,7 +36,7 @@ function addItem(text,rating) {
     var newRating = $('#items tbody tr:last-child td.rating .star');
     for(var i = rating - 1; i >= 0; i--) {
         $(newRating[i]).addClass('rated');
-    }
+    } 
 }
 
 function fillStar(star) {
