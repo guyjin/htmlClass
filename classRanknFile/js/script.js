@@ -44,8 +44,7 @@ function init() {
         var a = [];
         localStorage.setItem('items',JSON.stringify(a));
     }
-
-//    populateList();
+    populateList();
 }
 
 // build the entire list based on the contents of localStorage
@@ -54,27 +53,27 @@ function populateList() {
     if(items.length > 0) {
         for (var i = 0; i <= items.length -1 ; i++) {
             // insert the Todo into the html list.
-            processNewItem(items[i]['item'],items[i]['id'],items[i]['rating']);
-        };
+            renderItem(items[i]);
+        }
     }
-
-
-
 }
 
 function processNewItem() {
     var text = $('#firstItemName').val();
     var rating = $('.stars .rated').length;
-    var id = util.save(text,rating);
-    addItem(text,rating,id);
+    renderItem(util.save(text, rating));
 }
 
-function addItem(text,rating) {
+function renderItem(item) {
 
-    $('.template tr').clone().appendTo('#items tbody');
-    $('#items tbody tr:last-child td.itemText').text(text);
-    var newRating = $('#items tbody tr:last-child td.rating .star');
-    for(var i = rating - 1; i >= 0; i--) {
+    var row = $('.template tr')
+        .clone()
+        .data('item-id', item.id)
+        .appendTo('#items tbody');
+
+    row.find('td.itemText').text(item.item);
+    var newRating = row.find('td.rating .star');
+    for(var i = item.rating - 1; i >= 0; i--) {
         $(newRating[i]).addClass('rated');
     }
     resetForm();
