@@ -111,33 +111,43 @@ var util = {
             }
             uuid += (i === 12 ? 4 : (i === 16 ? (random & 3 | 8) : random)).toString(16);
         }
-
         return uuid;
-    }, 
+    },
+
+    getStore: function(){
+        var items = [];
+        var rawdata = localStorage.getItem('items');
+
+        if(typeof rawdata === 'string'){
+            items = JSON.parse(rawdata);
+        }
+
+        return items;
+    },
+
     save: function(item,rating) {
-        console.log('save', item, rating);
-            var item = item;
-            var id = util.uuid();
-            var rating = rating;
+            var items = util.getStore();
             var itemEntry = {
-                'id':id,
+                'id': util.uuid(),
                 'item':item,
                 'rating':rating
-            }
-
-            items = [];
-                if (localStorage.getItem('items') === null) {
-                    items = [];
-                } else {
-                    // Parse the serialized data back into an array of objects
-                    items = JSON.parse(localStorage.getItem('items'));
-                }
+            };
 
             // Push the new data (whether it be an object or anything else) onto the array
             items.push(itemEntry);
             // Re-serialize the array back into a string and store it in localStorage
             localStorage.setItem('items', JSON.stringify(items));
 
-            return id;
+            return itemEntry;
+    },
+
+    remove: function(id){
+        var items = util.getStore();
+
+        items = items.filter(function(item){
+            return item.id !== id;
+        });
+
+        localStorage.setItem('items', JSON.stringify(items));
     }
 }
