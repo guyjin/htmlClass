@@ -92,7 +92,7 @@ function emptyStar(star) {
 function setRating(star) {
     star.siblings().removeClass('rated');
     star.removeClass('rated');
-    star.addClass('rated')
+    star.addClass('rated');
     star.prevAll().addClass('rated');
 }
 
