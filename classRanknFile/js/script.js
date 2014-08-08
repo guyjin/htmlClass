@@ -103,7 +103,7 @@ function resetForm() {
 
 var util = {
     uuid: function() {
-        var i, random, uuid;
+        var i, random, uuid = "";
         for (i = 0; i < 32; i++) {
             random = Math.random() * 16 | 0;
             if (i === 8 || i === 12 || i === 16 || i === 20) {
