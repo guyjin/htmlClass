@@ -12,25 +12,29 @@ function init() {
 
     $('.stars .star').on('mouseout', function() {
         emptyStar($(this));
-    })
+    });
 
     $('.stars .star').on('click', function() {
         setRating($(this));
-    })
+    });
+
     $('form').on('submit', function(event){
         event.preventDefault();
         processNewItem();
     });
+
     $('form').on('reset', function(event){
         event.preventDefault();
         resetForm();
-    })
-    $('#items').on('click', function(event){
-        var t = event.target;
-        if($(t).hasClass('glyphicon-remove')){
-            $(t).closest('tr').remove();
-        }
-    })
+    });
+
+    $('#items').on('click', '.glyphicon-remove', function(event){
+       var row = $(this).closest('tr');
+       var id = row.data('item-id');
+       util.remove(id); // remove from localStorage
+       row.remove();
+
+    });
 
     // get or setup localstorage
 
