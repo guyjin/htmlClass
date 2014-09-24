@@ -103,6 +103,8 @@
 	* aside
 	* canvas
 	* block
+	* audio
+	* video
 * HTML 5 Data Storage
 	* Index DB
 	* Local Storage
