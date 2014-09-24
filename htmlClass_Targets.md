@@ -70,7 +70,9 @@
 			* thead
 			* tbody
 			* tr
-			* td			
+			* td
+			* caption
+			* 
 		* using attributes to expand the meaning of tags
 			* href
 			* title
@@ -105,6 +107,7 @@
 	* block
 	* audio
 	* video
+	* picture
 * HTML 5 Data Storage
 	* Index DB
 	* Local Storage
